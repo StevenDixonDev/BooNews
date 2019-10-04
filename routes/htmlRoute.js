@@ -3,10 +3,11 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/", function(req, res) {
-  db.User.find({}).then(data => {
-    console.log(data);
-    res.render("index", data);
-  });
+  db.Article.find({})
+    .populate("comments")
+    .then(data => {
+      res.render("index", {articles: data});
+    });
 });
 
 module.exports = router;

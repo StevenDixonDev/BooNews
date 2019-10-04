@@ -1,1 +1,14 @@
-hello world
+{{#each articles}}
+<article class="article-body">
+  <div class="article-info">
+    <p>{{this.title}}</p>
+    <p>{{this.byline}}</p>
+    <p>{{this.synopsis}}</p>
+  </div>
+  <div class="article-comment-wrapper">
+    {{#each this.comments}}
+    {{> comment comment=this.data}}
+    {{/each}}
+  </div>
+</article>
+{{/each}}

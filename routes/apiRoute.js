@@ -62,7 +62,6 @@ router.get("/scrape", function(req, res) {
 
 // add a comment to an article using post
 router.post("/addcomment/:id", function(req, res) {
-  console.log(req.body);
   db.Comment.create(req.body)
     .then(data => {
       return db.Article.findOneAndUpdate(
