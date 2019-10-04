@@ -6,8 +6,7 @@
   "scripts": {
     "test": "jest",
     "format": "prettier --write src/**",
-    "lint": "eslint --cache **/*.js",
-    "lint:deploy": "eslint **/*.js"
+    "lint": "eslint --quiet ."
   },
   "repository": {
     "type": "git",
