@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const dbUrl = process.env.DATABASE_URL || "mongodb://localhost/populatedb";
+const dbUrl = process.env.DATABASE_URL || "mongodb://localhost/";
 
 mongoose.connect(dbUrl, {useNewUrlParser: true});
 
