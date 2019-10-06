@@ -1,3 +1,4 @@
+{{> banner}}
 {{#each articles}}
 <article class="article-body">
   <div class="article-info">
@@ -9,6 +10,10 @@
     {{#each this.comments}}
     {{> comment comment=this.data}}
     {{/each}}
+  </div>
+  <div class="article-new-comment">
+    <input></input>
+    <button>comment</button>
   </div>
 </article>
 {{/each}}

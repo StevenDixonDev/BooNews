@@ -8,7 +8,6 @@ Disclaimer: Borrowing some news from https://www.livescience.com/strange-news
 #### Front End
 
 - Pure JS ( (No Jquery)
-- Polyfills (Fetch, Promise)
 - [Bulma CSS](https://bulma.io/)
 
 #### Backend
