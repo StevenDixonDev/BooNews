@@ -1,21 +1,23 @@
 {{> banner}}
 <section class="content">
-{{#each articles}}
-<article class="article-body">
-  <div class="article-info">
-    <p>{{this.title}}</p>
-    <p>{{this.byline}}</p>
-    <p>{{this.synopsis}}</p>
-  </div>
-  <div class="article-comment-wrapper">
-    {{#each this.comments}}
-    {{> comment comment=this.data}}
+  <div class="columns is-multiline is-3">
+    {{#each articles}}
+    <div class="column is-one-third">
+      <div class="card">
+        <div class="card-content">
+          <p class="title is-4">{{this.title}}</p>
+          <p>{{this.byline}}</p>
+          <p>{{this.synopsis}}</p>
+        </div>
+        <div class="card-footer">
+          <a href="/article/{{this._id}}">Comments ({{this.comments.length}})</a>
+        </div>
+      </div>
+    </div>
     {{/each}}
   </div>
-  <div class="article-new-comment">
-    <input></input>
-    <button>comment</button>
-  </div>
-</article>
-{{/each}}
+
 </section>
+{{#unless articles}}
+{{> welcomeMessage}}
+{{/unless}}

@@ -33,7 +33,6 @@ router.get("/scrape", function(req, res) {
     .get("https://www.livescience.com/strange-news")
     .then(function(response) {
       const $ = cheerio.load(response.data);
-
       $("article").each(function() {
         let result = {};
         result.title = $(this)
@@ -56,7 +55,7 @@ router.get("/scrape", function(req, res) {
         });
       });
 
-      res.send("ok");
+      res.send("/");
     });
 });
 
