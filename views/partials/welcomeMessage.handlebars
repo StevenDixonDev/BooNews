@@ -1,0 +1,17 @@
+<section class="columns is-centered section">
+  <div class="has-text-centered card">
+    <div class="card-content">
+      <p class="mb-2">Welcome to BooNews! It looks like there are no spooky stories yet.</p>
+      <button id="load-news" class="is-centered button is-primary mt-2">Load Stories!</button>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  document.getElementById("load-news").addEventListener("click", function (e) {
+    fetch("/api/scrape")
+      .then(response => response.text())
+      .then(data => window.location.href = data);
+  })
+</script>
