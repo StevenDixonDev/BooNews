@@ -51,7 +51,7 @@ router.get("/scrape", function(req, res) {
           .parent()
           .attr("href");
         db.Article.create(result).catch(err => {
-          res.json(err);
+          console.log(err);
         });
       });
 
@@ -61,6 +61,13 @@ router.get("/scrape", function(req, res) {
 
 // add a comment to an article using post
 router.post("/addcomment/:id", function(req, res) {
+  console.log(req.body);
+  if (!req.body.data) {
+    return res.json({Error: "Missing comment"});
+  }
+
+  req.body.name = generateRandomName();
+
   db.Comment.create(req.body)
     .then(data => {
       return db.Article.findOneAndUpdate(
@@ -78,3 +85,41 @@ router.post("/addcomment/:id", function(req, res) {
 });
 
 module.exports = router;
+
+function generateRandomName() {
+  const descriptors = [
+    "Gross",
+    "Massive",
+    "Tumorous",
+    "Icky",
+    "Nasty",
+    "Slimy",
+    "Chunky",
+    "Sticky",
+    "Feral",
+    "Smelly",
+    "Sanguine",
+    "Fetid"
+  ];
+
+  const names = [
+    "Bat",
+    "Vampire",
+    "Ghost",
+    "Goblin",
+    "Troll",
+    "Pumpkin",
+    "Witch",
+    "Wizard",
+    "Warlock",
+    "Mummy",
+    "Frankenstein",
+    "Blob"
+  ];
+
+  function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  return getRandom(descriptors) + getRandom(names);
+}
