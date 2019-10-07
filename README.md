@@ -8,7 +8,8 @@ Disclaimer: Borrowing some news from https://www.livescience.com/strange-news
 #### Front End
 
 - Pure JS ( (No Jquery)
-- [Bulma CSS](https://bulma.io/)
+- ~[Bulma CSS](https://bulma.io/)~
+- Materialize
 
 #### Backend
 
@@ -28,7 +29,11 @@ Disclaimer: Borrowing some news from https://www.livescience.com/strange-news
 
 ### Development
 
-I leveraged handlebars heavily in this project, I wanted to pull out all the stops and create well polished looking application. For the front end I committed to not using JQuery or Bootstrap. I did decide to try out Bulma css for this project. I also wanted to dive heavily into writing unit tests for the application as well.
+I leveraged handlebars heavily in this project, I wanted to pull out all the stops and create well polished looking application. For the front end I committed to not using JQuery or Bootstrap. I also wanted to dive heavily into writing unit tests for the application as well.
+
+I tried bulma for this project however I found it clunky and missing features. I decided to switch to materialize as it is more popular and has better documentation.
+
+I was going to use a login system but decided to keep it anonymous, I just use a function to define random names.
 
 ### Thanks
 

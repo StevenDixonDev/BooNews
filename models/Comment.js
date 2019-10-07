@@ -6,6 +6,10 @@ const CommentSchema = new Schema({
   data: {
     type: String,
     required: true
+  },
+  name: {
+    type: String,
+    required: true
   }
 });
 
