@@ -10,6 +10,10 @@ const CommentSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  pin: {
+    type: Number,
+    required: true
   }
 });
 

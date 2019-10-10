@@ -39,3 +39,33 @@ body:after{
 .article-comment{
   padding: .7em;
 }
+
+*{
+  font-family: 'Indie Flower', cursive;
+}
+
+p{
+  font-size: 1.2em;
+}
+
+a{
+  font-size: 1.5em;
+}
+
+.no-comment{
+  text-align: center;
+  color: rgb(194, 194, 194);
+}
+
+.deletebutton{
+  cursor: pointer;
+}
+
+.deletebutton:hover{
+  color: orange;
+}
+
+.comment-title{
+  padding: 0;
+  margin: 0;
+}
