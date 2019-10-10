@@ -1,5 +1,35 @@
-<li class="card article-comment">
-  <span class="card-title">{{comment.name}}:</span>
-  <hr />
+<li class="card article-comment grey darken-4 white-text">
+  <span class="card-title row comment-title">
+    <span class="col s11 comment-title">
+      {{comment.name}}:
+    </span>
+    <span class="deletebutton col s1 comment-title">
+      <i id="commentid{{comment._id}}" class="material-icons deletebutton">close</i>
+    </span>
+  </span>
+  <div class="card-action">
     <p>{{comment.data}}</p>
+  </div>
 </li>
+
+<script>
+  document.getElementById("commentid{{comment._id}}").addEventListener("click", function (e) {
+    let id = "{{comment._id}}";
+    let pin = "{{comment.pin}}"
+    let userPin = window.localStorage.getItem("pin");
+    if (pin === userPin) {
+      fetch("/api/deleteComment/", {
+        method: 'POST',
+        body: JSON.stringify(
+          {
+            id
+          }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => document.location.reload(true));
+    }
+
+  })
+</script>

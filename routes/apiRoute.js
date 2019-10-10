@@ -61,7 +61,6 @@ router.get("/scrape", function(req, res) {
 
 // add a comment to an article using post
 router.post("/addcomment/:id", function(req, res) {
-  console.log(req.body);
   if (!req.body.data) {
     return res.json({Error: "Missing comment"});
   }
@@ -82,6 +81,13 @@ router.post("/addcomment/:id", function(req, res) {
     .catch(err => {
       res.json(err);
     });
+});
+
+router.post("/deleteComment/", function(req, res) {
+  if (!req.body) {
+    return res.json({Error: "Missing id"});
+  }
+  db.Comment.findOneAndRemove({_id: req.body.id}).then(data => res.json(data));
 });
 
 module.exports = router;

@@ -20,6 +20,11 @@ if (process.env.ENVIRONMENT === "development") {
   mongoose.connection.dropDatabase();
 }
 
+app.get("/api/clear", function(req, res) {
+  mongoose.connection.dropDatabase();
+  res.send("done");
+});
+
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 

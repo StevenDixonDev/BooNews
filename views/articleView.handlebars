@@ -6,18 +6,21 @@
     <div class="col s12 m8 offset-m2">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">{{article.title}}</span>
+          <span class="card-title">
+            <h4>{{article.title}}</h4>
+          </span>
           <p>{{article.byline}}</p>
           <hr />
           <p>{{article.synopsis}}</p>
           <br />
-          <p>Source: </p>
-          <a href="{{article.url}}" target="_Blank">Link</a>
+          <p>Source:
+            <a href="{{article.url}}" target="_Blank">Link</a> </p>
         </div>
         <div class="card-action">
-          <label for="textarea1">Comment:</label>
+          <label for="comment">Comment:</label>
           <textarea id="comment" class="materialize-textarea" rows="2"></textarea>
-          <button class="btn waves-effect waves-light yellow darken-4" id="submit-comment" type="submit" name="action">Submit
+          <button class="btn waves-effect waves-light yellow darken-4" id="submit-comment" type="submit"
+            name="action">Submit
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -26,17 +29,13 @@
           {{#if article.comments}}
           <ul class="comments-list">
             {{#each article.comments}}
-              {{> comment comment=this}}
+            {{> comment comment=this}}
             {{/each}}
           </ul>
           {{/if}}
-
-
           {{#unless article.comments}}
-          <p>No comments</p>
+          <p class="no-comment">No comments</p>
           {{/unless}}
-
-
         </div>
       </div>
     </div>
@@ -47,16 +46,20 @@
   document.getElementById("submit-comment").addEventListener("click", function (e) {
     console.log("test");
     e.preventDefault();
-    let data = document.getElementById("comment").value.trim();
-    console.log(data)
+    let comment = document.getElementById("comment").value.trim();
+    let pin = window.localStorage.getItem("pin");
     let id = "{{article._id}}";
-    fetch("/api/addcomment/"+id, {
+    fetch("/api/addcomment/" + id, {
       method: 'POST',
-      body: JSON.stringify({data: data}),
+      body: JSON.stringify(
+        {
+          data: comment,
+          pin: pin
+        }),
       headers: {
-      'Content-Type': 'application/json'
-    }
+        'Content-Type': 'application/json'
+      }
     })
-    .then(res => document.location.reload(true));
+      .then(res => document.location.reload(true));
   });
 </script>
